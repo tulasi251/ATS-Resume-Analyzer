@@ -1,4 +1,4 @@
-# ATS-Based Resume Analyzer & Job Skill Matcher (Frontend Prototype)
+# Resume ATS Analyzer & Job Skill Matcher(Frontend Prototype)
 
 This project is a frontend prototype of an Applicant Tracking System (ATS) that analyzes resumes against job descriptions and highlights skill matches and gaps.
 
