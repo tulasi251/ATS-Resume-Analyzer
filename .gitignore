@@ -1,0 +1,12 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Node / temp
+node_modules/
+
+# Python (future use)
+__pycache__/
+*.pyc
+env/
+venv/

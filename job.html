@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Job Description</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="wrapper">
+
+    <div class="left">
+        <div class="steps">
+            <a href="index.html">1. Add Resume</a>
+            <a href="resume.html">2. Save Your Resume</a>
+            <a href="job.html" class="active-step">3. Job Description</a>
+        </div>
+
+        <h2>Paste Job Description</h2>
+        <p class="sub-text">
+            Paste the job description you are applying for.
+        </p>
+
+        <textarea id="jobDescription" rows="8" placeholder="Paste job description here..."></textarea>
+
+        <div class="actions">
+            <a href="resume.html" class="cancel">Back</a>
+            <button class="primary" onclick="analyzeJob()">Analyze Resume</button>
+        </div>
+    </div>
+
+    <div class="right">
+        <h3>Why this step?</h3>
+        <ul>
+            <li>✔ Match your skills with job needs</li>
+            <li>✔ Improve ATS score</li>
+            <li>✔ Identify missing skills</li>
+        </ul>
+    </div>
+
+</div>
+
+<script src="js/script.js"></script>
+</body>
+</html>

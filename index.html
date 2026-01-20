@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Resume</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<!-- PROJECT HEADER -->
+<div class="project-header">
+    ATS-Based Resume Analyzer
+</div>
+
+<body>
+
+<div class="wrapper">
+    <!-- LEFT SECTION -->
+    <div class="left">
+
+        <div class="steps">
+    <a href="index.html" class="active-step">1. Add Resume</a>
+    <a href="resume.html" class="step-link">2. Save Your Resume</a>
+    <a href="job.html" class="step-link">3.Job Description</a>
+</div>
+
+
+        <h2>Add Your Resume</h2>
+        <p class="sub-text">
+            Use our uploader to save your resume and reach thousands of active employers.
+        </p>
+
+        <!-- ✅ JOB TITLE WITH AUTOCOMPLETE -->
+        <label>Desired Job Title</label>
+        <div class="autocomplete">
+            <input type="text"
+                   id="jobTitle"
+                   placeholder="Enter desired job title here"
+                   onkeyup="showSuggestions()">
+
+            <div id="suggestions" class="suggestions-box"></div>
+        </div>
+
+        <h4>Upload Options</h4>
+
+        <div class="upload-box">
+    <input type="file" id="resumeFile" hidden onchange="showFileName()">
+
+    <button type="button" class="upload-btn" onclick="openFile()">
+        ⬆ Upload Resume
+    </button>
+
+    <!-- ✅ FILE NAME DISPLAY -->
+    <p id="fileName" class="file-name">No file selected</p>
+
+    <button type="button" class="upload-btn" onclick="uploadFromDropbox()">
+        ☁ Add from Dropbox
+    </button>
+
+    <button type="button" class="upload-btn" onclick="uploadFromGoogleDrive()">
+        ☁ Add from Google Drive
+    </button>
+</div>
+
+
+        <div class="actions">
+            <a href="#" class="cancel">Cancel</a>
+            <button class="primary" onclick="validateForm()">Next</button>
+        </div>
+
+    </div>
+
+    <!-- RIGHT SECTION -->
+    <div class="right">
+        <img src="images/illustration.png" alt="Resume Illustration">
+        <h3>Uploading a resume makes applying to jobs easy!</h3>
+        <ul>
+            <li>✔ Make your resume public to be visible to Hiring Managers</li>
+            <li>✔ Speed up the application process with Quick Apply</li>
+            <li>✔ See similar job titles and skills to help your next move</li>
+        </ul>
+    </div>
+</div>
+
+<!-- ✅ JS ALWAYS AT END -->
+<script src="js/script.js"></script>
+</body>
+</html>

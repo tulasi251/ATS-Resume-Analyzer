@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Save Your Resume</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="wrapper">
+
+    <!-- LEFT SECTION -->
+    <div class="left">
+
+        <!-- STEPS -->
+        <div class="steps">
+            <a href="index.html" class="step-link">1. Add Resume</a>
+            <a href="resume.html" class="active-step">2. Save Your Resume</a>
+            <a href="job.html" class="step-link">3. Create Your Account</a>
+        </div>
+
+        <h2>Save Your Resume</h2>
+        <p class="sub-text">
+            Review your resume details before saving.
+        </p>
+
+        <!-- ✅ DYNAMIC RESUME SUMMARY -->
+        <div class="resume-summary">
+
+            <h4>Desired Job Title</h4>
+            <p id="savedJobTitle">-</p>
+
+            <h4>Uploaded Resume</h4>
+            <p id="savedResumeFile">-</p>
+
+            <h4>Resume Visibility</h4>
+            <p>Public (Visible to employers)</p>
+
+        </div>
+
+        <div class="actions">
+            <a href="index.html" class="cancel">Back</a>
+            <button class="primary" onclick="saveResume()">Save & Continue</button>
+        </div>
+
+    </div>
+
+    <!-- RIGHT SECTION -->
+    <div class="right">
+        <img src="images/resume.png" alt="Resume Icon">
+        <h3>Your resume is almost ready!</h3>
+        <ul>
+            <li>✔ Employers can find your profile</li>
+            <li>✔ Faster job applications</li>
+            <li>✔ One-click apply enabled</li>
+        </ul>
+    </div>
+
+</div>
+
+<!-- ✅ LOAD JS -->
+<script src="js/script.js"></script>
+
+<!-- ✅ READ DATA FROM STEP 1 -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const jobTitle = localStorage.getItem("jobTitle");
+        const resumeFileName = localStorage.getItem("resumeFileName");
+
+        if (jobTitle) {
+            document.getElementById("savedJobTitle").textContent = jobTitle;
+        } else {
+            document.getElementById("savedJobTitle").textContent = "Not provided";
+        }
+
+        if (resumeFileName) {
+            document.getElementById("savedResumeFile").textContent = resumeFileName;
+        } else {
+            document.getElementById("savedResumeFile").textContent = "No file uploaded";
+        }
+    });
+</script>
+
+</body>
+</html>
