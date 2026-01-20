@@ -29,6 +29,20 @@ This project is a frontend prototype of an Applicant Tracking System (ATS) that 
 ## 📷 Demo
 👉 Screen recording demo available on LinkedIn
 
+## 📸 Project Screenshots
+
+### 1️⃣ Add Resume
+![Add Resume](screenshots/add-resume.png)
+
+### 2️⃣ Save Your Resume
+![Save Resume](screenshots/save-resume.png)
+
+### 3️⃣ Job Description
+![Job Description](screenshots/job-description.png)
+
+### 4️⃣ ATS Result
+![ATS Result](screenshots/ats-result.png)
+
 ## 📈 Future Enhancements
 - Django backend integration
 - Resume text extraction (PDF/DOCX)
