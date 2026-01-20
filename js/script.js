@@ -60,10 +60,13 @@ function showSuggestions() {
     const box = document.getElementById("suggestions");
     box.innerHTML = "";
 
-    if (!input) return (box.style.display = "none");
+    if (!input) {
+        box.style.display = "none";
+        return;
+    }
 
     jobTitles
-        .filter(j => j.toLowerCase().includes(input))
+        .filter(job => job.toLowerCase().includes(input))
         .forEach(job => {
             const div = document.createElement("div");
             div.textContent = job;
@@ -93,13 +96,14 @@ function analyzeJob() {
 }
 
 /* ===============================
-   ATS ANALYSIS (RESULT PAGE)
+   ATS ANALYSIS + EXCEL SPEEDOMETER
 ================================ */
 document.addEventListener("DOMContentLoaded", function () {
 
-    if (!document.getElementById("atsScore")) return;
+    // Run ONLY on result.html
+    if (!document.getElementById("needle")) return;
 
-    // 🔹 SIMULATED RESUME SKILLS
+    /* ===== SIMULATED RESUME SKILLS ===== */
     const resumeSkills = [
         "python",
         "django",
@@ -108,7 +112,7 @@ document.addEventListener("DOMContentLoaded", function () {
         "javascript"
     ];
 
-    // 🔹 JOB REQUIRED SKILLS
+    /* ===== JOB REQUIRED SKILLS ===== */
     const jdSkills = [
         "python",
         "django",
@@ -133,9 +137,37 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const score = Math.round((matched.length / jdSkills.length) * 100);
 
-    document.getElementById("atsScore").textContent = score + "%";
-    document.getElementById("matchedSkills").textContent = matched.join(", ");
-    document.getElementById("missingSkills").textContent = missing.join(", ");
+    /* ===== EXCEL-STYLE SPEEDOMETER + ANIMATION ===== */
+    const needle = document.getElementById("needle");
+    const gaugeValue = document.getElementById("gaugeValue");
+
+    // Convert score (0–100) → angle (-90° to +90°)
+    const angle = (score / 100) * 180 - 90;
+
+    // Smooth needle animation
+    setTimeout(() => {
+        needle.style.transform = `rotate(${angle}deg)`;
+    }, 300);
+
+    // Animated score counter
+    let current = 0;
+    const interval = setInterval(() => {
+        current++;
+        gaugeValue.textContent = current + "%";
+
+        if (current >= score) {
+            clearInterval(interval);
+            gaugeValue.textContent = score + "%";
+        }
+    }, 15);
+
+    /* ===== TEXT RESULTS ===== */
+    document.getElementById("matchedSkills").textContent =
+        matched.length ? matched.join(", ") : "No skills matched";
+
+    document.getElementById("missingSkills").textContent =
+        missing.length ? missing.join(", ") : "No missing skills";
+
     document.getElementById("grammarIssues").textContent =
         "Grammar check will be handled using Python NLP backend.";
 });
@@ -151,8 +183,10 @@ function uploadFromGoogleDrive() {
     alert("Google Drive integration will be implemented in backend.");
 }
 
+/* ===============================
+   STEP 2 → SAVE RESUME
+================================ */
 function saveResume() {
     alert("Resume saved successfully!");
     window.location.href = "job.html";
 }
-

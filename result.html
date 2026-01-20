@@ -13,8 +13,27 @@
         <h2>ATS Analysis Result</h2>
 
         <div class="resume-summary">
+
+            <!-- ATS SCORE SPEEDOMETER -->
             <h4>ATS Score</h4>
-            <p id="atsScore">-</p>
+
+<div class="speedometer">
+    <div class="labels">
+        <span class="poor">Poor</span>
+        <span class="average">Average</span>
+        <span class="good">Good</span>
+    </div>
+
+    <div class="meter">
+        <div class="needle" id="needle"></div>
+        <div class="center-dot"></div>
+    </div>
+
+    <div class="gauge-value" id="gaugeValue">0%</div>
+</div>
+
+
+
 
             <h4>Matched Skills</h4>
             <p id="matchedSkills">-</p>
@@ -24,6 +43,7 @@
 
             <h4>Grammar Issues</h4>
             <p id="grammarIssues">-</p>
+
         </div>
 
         <div class="actions">

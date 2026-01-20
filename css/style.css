@@ -203,3 +203,223 @@ input[type="text"] {
     margin-top: 5px;
     color: #e0f2fe;
 }
+/* ATS SPEEDOMETER */
+.gauge-container {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.gauge {
+    position: relative;
+    width: 220px;
+    height: 110px;
+    margin: auto;
+    border-radius: 220px 220px 0 0;
+    background: linear-gradient(to right, #ef4444, #facc15, #22c55e);
+    overflow: hidden;
+}
+
+.needle {
+    position: absolute;
+    width: 4px;
+    height: 90px;
+    background: #111;
+    bottom: 0;
+    left: 50%;
+    transform-origin: bottom center;
+    transform: rotate(-90deg);
+    transition: transform 1s ease-in-out;
+}
+
+.center-circle {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    background: #111;
+    border-radius: 50%;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.gauge-value {
+    font-size: 26px;
+    font-weight: bold;
+    margin-top: 10px;
+    color: #2563eb;
+}
+
+/* CIRCULAR ATS SPEEDOMETER */
+.circle-container {
+    position: relative;
+    width: 160px;
+    height: 160px;
+    margin: 20px auto;
+}
+
+.progress-ring {
+    transform: rotate(-90deg);
+}
+
+.progress-ring-bg {
+    fill: none;
+    stroke: #e5e7eb;
+    stroke-width: 12;
+}
+
+.progress-ring-fill {
+    fill: none;
+    stroke-width: 12;
+    stroke-linecap: round;
+    stroke-dasharray: 440;
+    stroke-dashoffset: 440;
+    transition: stroke-dashoffset 1s ease, stroke 1s ease;
+}
+
+.circle-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 28px;
+    font-weight: bold;
+    color: #2563eb;
+}
+/* 180 DEGREE ATS SPEEDOMETER */
+.semi-gauge-container {
+    position: relative;
+    width: 220px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+.semi-gauge-bg {
+    fill: none;
+    stroke: #e5e7eb;
+    stroke-width: 14;
+}
+
+.semi-gauge-fill {
+    fill: none;
+    stroke-width: 14;
+    stroke-linecap: round;
+    stroke-dasharray: 314; /* half circle length */
+    stroke-dashoffset: 314;
+    transition: stroke-dashoffset 1s ease, stroke 0.5s ease;
+}
+
+.semi-gauge-value {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 26px;
+    font-weight: bold;
+    color: #2563eb;
+}
+/* SPEEDOMETER */
+.speedometer-container {
+    text-align: center;
+    margin: 20px auto;
+    position: relative;
+}
+
+.gauge {
+    fill: none;
+    stroke-width: 16;
+}
+
+.gauge.poor {
+    stroke: #ef4444;
+}
+
+.gauge.average {
+    stroke: #facc15;
+}
+
+.gauge.good {
+    stroke: #22c55e;
+}
+
+.needle {
+    stroke: #111;
+    stroke-width: 4;
+    transform-origin: 130px 130px;
+    transform: rotate(-90deg);
+    transition: transform 1s ease;
+}
+
+.speed-value {
+    font-size: 26px;
+    font-weight: bold;
+    margin-top: -10px;
+    color: #2563eb;
+}
+/* ===== SPEEDOMETER ===== */
+.speedometer {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.meter {
+    position: relative;
+    width: 220px;
+    height: 110px;
+    border-radius: 220px 220px 0 0;
+    background: linear-gradient(
+        to right,
+        #ef4444 0%,
+        #ef4444 33%,
+        #facc15 33%,
+        #facc15 66%,
+        #22c55e 66%,
+        #22c55e 100%
+    );
+    margin: auto;
+    overflow: hidden;
+}
+
+/* Needle */
+.needle {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 4px;
+    height: 95px;
+    background: #111;
+    transform-origin: bottom center;
+    transform: rotate(-90deg);
+    transition: transform 1.2s ease-in-out;
+}
+
+/* Center dot */
+.center-dot {
+    position: absolute;
+    bottom: -6px;
+    left: 50%;
+    width: 14px;
+    height: 14px;
+    background: #111;
+    border-radius: 50%;
+    transform: translateX(-50%);
+}
+
+/* Labels */
+.labels {
+    display: flex;
+    justify-content: space-between;
+    width: 220px;
+    margin: 5px auto;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.poor { color: #ef4444; }
+.average { color: #facc15; }
+.good { color: #22c55e; }
+
+.gauge-value {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 10px;
+}
