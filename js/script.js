@@ -1,24 +1,25 @@
 /* ===============================
    FILE UPLOAD
 ================================ */
+let uploadedFile = null;
 function openFile() {
     document.getElementById("resumeFile").click();
 }
 
 function showFileName() {
     const fileInput = document.getElementById("resumeFile");
-    const fileNameDisplay = document.getElementById("fileName");
+    uploadedFile = fileInput.files[0];
 
-    fileNameDisplay.textContent =
-        fileInput.files.length > 0
-            ? "Selected file: " + fileInput.files[0].name
+    document.getElementById("fileName").textContent =
+        uploadedFile
+            ? "Selected file: " + uploadedFile.name
             : "No file selected";
 }
 
 /* ===============================
    STEP 1 → SAVE DATA
 ================================ */
-function validateForm() {
+async function validateForm() {
     const jobTitle = document.getElementById("jobTitle").value.trim();
     const resumeInput = document.getElementById("resumeFile");
 
@@ -32,10 +33,35 @@ function validateForm() {
         return;
     }
 
+    const file = resumeInput.files[0];
+
+    const formData = new FormData();
+    formData.append("resume", file);
+
+    try {
+    const response = await fetch("http://localhost:8000/upload/", {
+        method: "POST",
+        body: formData
+    });
+
+    console.log("RESPONSE STATUS:", response.status);
+
+    const data = await response.json();
+    console.log("RESPONSE DATA:", data);
+
+    if (!response.ok) {
+        throw new Error(data.error || "Upload failed");
+    }
+
     localStorage.setItem("jobTitle", jobTitle);
-    localStorage.setItem("resumeFileName", resumeInput.files[0].name);
+    localStorage.setItem("resumeFileName", data.file_name);
 
     window.location.href = "resume.html";
+
+} catch (error) {
+    console.error("UPLOAD ERROR:", error);
+    alert("Upload failed: " + error.message);
+}
 }
 
 /* ===============================
@@ -83,15 +109,33 @@ function showSuggestions() {
 /* ===============================
    JOB DESCRIPTION PAGE
 ================================ */
-function analyzeJob() {
-    const jd = document.getElementById("jobDescription").value.trim();
+async function analyzeJob() {
+    const jd = document.getElementById("jobDescription").value;
 
     if (!jd) {
         alert("Please paste job description");
         return;
     }
 
-    localStorage.setItem("jobDescription", jd.toLowerCase());
+    const fileName = localStorage.getItem("resumeFileName");
+
+    const formData = new FormData();
+    formData.append("file_name", fileName);
+    formData.append("job_description", jd);
+
+    const response = await fetch("http://localhost:8000/analyze/", {
+        method: "POST",
+        body: formData
+    });
+
+    const data = await response.json();
+
+    localStorage.setItem("score", data.score);
+    localStorage.setItem("matched", data.matched_skills);
+    localStorage.setItem("missing", data.missing_skills);
+    localStorage.setItem("experience", data.experience);
+    localStorage.setItem("education", data.education);
+    localStorage.setItem("suggestions", JSON.stringify(data.suggestions));
     window.location.href = "result.html";
 }
 
@@ -103,53 +147,21 @@ document.addEventListener("DOMContentLoaded", function () {
     // Run ONLY on result.html
     if (!document.getElementById("needle")) return;
 
-    /* ===== SIMULATED RESUME SKILLS ===== */
-    const resumeSkills = [
-        "python",
-        "django",
-        "html",
-        "css",
-        "javascript"
-    ];
+    /* ===== GET REAL DATA FROM BACKEND ===== */
+    const score = parseInt(localStorage.getItem("score")) || 0;
+    const matched = localStorage.getItem("matched") || "None";
+    const missing = localStorage.getItem("missing") || "None";
 
-    /* ===== JOB REQUIRED SKILLS ===== */
-    const jdSkills = [
-        "python",
-        "django",
-        "html",
-        "css",
-        "javascript",
-        "sql",
-        "rest api",
-        "git"
-    ];
-
-    let matched = [];
-    let missing = [];
-
-    jdSkills.forEach(skill => {
-        if (resumeSkills.includes(skill)) {
-            matched.push(skill);
-        } else {
-            missing.push(skill);
-        }
-    });
-
-    const score = Math.round((matched.length / jdSkills.length) * 100);
-
-    /* ===== EXCEL-STYLE SPEEDOMETER + ANIMATION ===== */
+    /* ===== SPEEDOMETER ===== */
     const needle = document.getElementById("needle");
     const gaugeValue = document.getElementById("gaugeValue");
 
-    // Convert score (0–100) → angle (-90° to +90°)
     const angle = (score / 100) * 180 - 90;
 
-    // Smooth needle animation
     setTimeout(() => {
         needle.style.transform = `rotate(${angle}deg)`;
     }, 300);
 
-    // Animated score counter
     let current = 0;
     const interval = setInterval(() => {
         current++;
@@ -162,15 +174,28 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 15);
 
     /* ===== TEXT RESULTS ===== */
-    document.getElementById("matchedSkills").textContent =
-        matched.length ? matched.join(", ") : "No skills matched";
-
-    document.getElementById("missingSkills").textContent =
-        missing.length ? missing.join(", ") : "No missing skills";
+    document.getElementById("matchedSkills").textContent = matched;
+    document.getElementById("missingSkills").textContent = missing;
+    const suggestions = JSON.parse(localStorage.getItem("suggestions")) || [];
+    document.getElementById("suggestions").textContent =
+        suggestions.length ? suggestions.join(", ") : "No suggestions";
 
     document.getElementById("grammarIssues").textContent =
         "Grammar check will be handled using Python NLP backend.";
+
+    document.getElementById("experience").textContent =
+        localStorage.getItem("experience")
+            ? localStorage.getItem("experience") + " years"
+            : "Not found";
+
+    document.getElementById("education").textContent =
+        localStorage.getItem("education") || "Not found";
+
 });
+
+ 
+
+  
 
 /* ===============================
    CLOUD PLACEHOLDERS

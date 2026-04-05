@@ -8,5 +8,14 @@ node_modules/
 # Python (future use)
 __pycache__/
 *.pyc
+
+# Virtual environments
 env/
 venv/
+
+# Django
+db.sqlite3
+media/
+
+# vs code
+.vscode/
