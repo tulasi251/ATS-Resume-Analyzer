@@ -3,38 +3,38 @@
 A full-stack web application that analyzes resumes against job descriptions and generates an ATS (Applicant Tracking System) score with actionable insights such as matched skills, missing skills, and improvement suggestions using NLP techniques.
 
 ## 🚀 Features
-📄 Upload resume (PDF/DOCX)
-🧠 NLP-based skill extraction (spaCy)
-📊 Match resume with job description
-🎯 ATS score calculation (weighted logic)
-✅ Display matched skills
-❌ Identify missing skills
-💡 Provide improvement suggestions
-🧑‍💼 Extract experience (years)
-🎓 Detect education level
-🌐 REST API integration using Django
-🔁 Multi-step user workflow (Upload → Analyze → Result)
+- 📄 Upload resume (PDF/DOCX)
+- 🧠 NLP-based skill extraction (spaCy)
+- 📊 Match resume with job description
+- 🎯 ATS score calculation (weighted logic)
+- ✅ Display matched skills
+- ❌ Identify missing skills
+- 💡 Provide improvement suggestions
+- 🧑‍💼 Extract experience (years)
+- 🎓 Detect education level
+- 🌐 REST API integration using Django
+- 🔁 Multi-step user workflow (Upload → Analyze → Result)
 
-🛠 Tech Stack
-Frontend
-HTML
-CSS
-JavaScript
-Backend
-Python
-Django
-Django REST Framework
-Libraries
-spaCy (NLP)
-PyPDF2 / python-docx
+## 🛠 Tech Stack
+## Frontend
+- HTML
+- CSS
+- JavaScript
+## Backend
+- Python
+- Django
+- Django REST Framework
+## Libraries
+- spaCy (NLP)
+- PyPDF2 / python-docx
 
 ## 🧠 How It Works
-User uploads resume
-Backend extracts text from resume (PDF/DOCX)
-NLP processes resume & job description
-Skills are matched and missing skills identified
-ATS score is calculated
-Suggestions are generated
+- User uploads resume
+- Backend extracts text from resume (PDF/DOCX)
+- NLP processes resume & job description
+- Skills are matched and missing skills identified
+- ATS score is calculated
+- Suggestions are generated
 
 ## 🎥 Project Demo Video
 
@@ -56,12 +56,11 @@ Suggestions are generated
 ![ATS Result](screenshots/ats-result.png)
 
 ## 📈 Future Enhancements
-User uploads resume
-Backend extracts text from resume (PDF/DOCX)
-NLP processes resume & job description
-Skills are matched and missing skills identified
-ATS score is calculated
-Suggestions are generated
+- Grammar checking using NLP
+- AI-based skill matching
+- Resume ranking system
+- User authentication & dashboard
+- Cloud deployment
 
 ## 👤 Author
 Gangarapu Tulasikrishna
