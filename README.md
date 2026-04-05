@@ -29,7 +29,7 @@ This project is a frontend prototype of an Applicant Tracking System (ATS) that 
 ## 🎥 Project Demo Video
 
 ▶️ Watch the project demo on LinkedIn:
-[▶️ Watch Demo Video on LinkedIn](https://www.linkedin.com/posts/tulasikrishna-gangarapu-06850b304_frontenddevelopment-javascript-webdevelopment-activity-7419346396950081536-K5gm?utm_source=share&utm_medium=member_desktop&rcm=ACoAAE2shpABTRJwf89PqpPdpzj1Z5yIAdhgSQ4)
+[▶️ Watch Demo Video on LinkedIn]
 
 ## 📸 Project Screenshots
 
