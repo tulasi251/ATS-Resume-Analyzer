@@ -1,30 +1,40 @@
 # Resume ATS Analyzer & Job Skill Matcher
 
-This project is a full-stack Applicant Tracking System (ATS) that analyzes resumes against job descriptions and generates an ATS score with actionable insights, including skill matching, missing skill detection, and improvement suggestions using NLP techniques.
+A full-stack web application that analyzes resumes against job descriptions and generates an ATS (Applicant Tracking System) score with actionable insights such as matched skills, missing skills, and improvement suggestions using NLP techniques.
 
 ## 🚀 Features
-- Resume upload with validation
-- Job title input with autocomplete
-- Multi-step user flow (Add Resume → Save Resume → Job Description → Result)
-- ATS score calculation (frontend logic)
-- Matched and missing skills display
-- Professional UI similar to real job portals
+📄 Upload resume (PDF/DOCX)
+🧠 NLP-based skill extraction (spaCy)
+📊 Match resume with job description
+🎯 ATS score calculation (weighted logic)
+✅ Display matched skills
+❌ Identify missing skills
+💡 Provide improvement suggestions
+🧑‍💼 Extract experience (years)
+🎓 Detect education level
+🌐 REST API integration using Django
+🔁 Multi-step user workflow (Upload → Analyze → Result)
 
-## 🛠 Tech Stack
-- HTML
-- CSS
-- JavaScript
-
-## 📌 Project Status
-- ✅ Frontend completed
-- 🔧 Backend (Python & Django) planned
-- 🔧 Database & APIs planned
+🛠 Tech Stack
+Frontend
+HTML
+CSS
+JavaScript
+Backend
+Python
+Django
+Django REST Framework
+Libraries
+spaCy (NLP)
+PyPDF2 / python-docx
 
 ## 🧠 How It Works
-1. User uploads resume and enters job title
-2. Resume details are reviewed
-3. User pastes job description
-4. ATS score and skill matching results are displayed
+User uploads resume
+Backend extracts text from resume (PDF/DOCX)
+NLP processes resume & job description
+Skills are matched and missing skills identified
+ATS score is calculated
+Suggestions are generated
 
 ## 🎥 Project Demo Video
 
@@ -46,11 +56,12 @@ This project is a full-stack Applicant Tracking System (ATS) that analyzes resum
 ![ATS Result](screenshots/ats-result.png)
 
 ## 📈 Future Enhancements
-- Django backend integration
-- Resume text extraction (PDF/DOCX)
-- Real ATS scoring using Python
-- Grammar checking using NLP
-- Database integration
+User uploads resume
+Backend extracts text from resume (PDF/DOCX)
+NLP processes resume & job description
+Skills are matched and missing skills identified
+ATS score is calculated
+Suggestions are generated
 
 ## 👤 Author
 Gangarapu Tulasikrishna
