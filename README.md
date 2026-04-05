@@ -1,4 +1,4 @@
-# Resume ATS Analyzer & Job Skill Matcher(Frontend Prototype)
+# Resume ATS Analyzer & Job Skill Matcher
 
 This project is a full-stack Applicant Tracking System (ATS) that analyzes resumes against job descriptions and generates an ATS score with actionable insights, including skill matching, missing skill detection, and improvement suggestions using NLP techniques.
 
